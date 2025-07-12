@@ -1,5 +1,8 @@
 # Python Project Template
 
+[![Code Quality](https://github.com/JacobPEvans/python-template/actions/workflows/ci.yml/badge.svg)](https://github.com/JacobPEvans/python-template/actions/workflows/ci.yml)
+[![Python Tests](https://github.com/JacobPEvans/python-template/actions/workflows/tests.yml/badge.svg)](https://github.com/JacobPEvans/python-template/actions/workflows/tests.yml)
+
 A minimal Python project template following modern best practices and industry standards.
 
 **Author:** JacobPEvans
