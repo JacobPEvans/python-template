@@ -17,12 +17,17 @@ and this project adheres to [Calendar Versioning](https://calver.org/).
 - Type hints throughout the codebase
 
 ### Changed
-- Updated documentation with better examples and usage instructions
 - ✅ Refactored GitHub Actions workflows for better separation of concerns
   - Split single `tests.yml` into dedicated `tests.yml` and `ci.yml` workflows
   - Removed `continue-on-error` from code quality checks to enforce standards
   - Added auto-fixing capabilities for black and isort in CI pipeline
+  - Updated `ci.yml` to run on all branches for comprehensive code quality enforcement
   - All local tests and quality checks pass successfully
+- Enhanced documentation with clearer setup instructions
+  - Updated README.md with explicit virtual environment setup steps (.venv convention)
+  - Added clear notes about pre-commit hook behavior and auto-fixing
+  - Updated project structure to reflect new dual workflow setup
+  - Clarified development vs production installation approaches
 
 ### Fixed
 - N/A

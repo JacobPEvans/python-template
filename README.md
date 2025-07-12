@@ -24,13 +24,14 @@ A minimal Python project template following modern best practices and industry s
 2. **Create and activate a virtual environment**
    ```bash
    # Windows
-   python -m venv venv
-   .\venv\Scripts\Activate.ps1
+   python -m venv .venv
+   .\.venv\Scripts\Activate.ps1
 
    # Linux/macOS
-   python -m venv venv
-   source venv/bin/activate
+   python3 -m venv .venv
+   source .venv/bin/activate
    ```
+   > **Note**: We use `.venv` as the directory name to match common conventions and ensure it's ignored by git.
 
 3. **Install dependencies**
    ```bash
@@ -40,18 +41,18 @@ A minimal Python project template following modern best practices and industry s
    # Or just production dependencies
    pip install -e .
    ```
+   > **Note**: The `-e` flag installs in "editable" mode, so changes to your code take effect immediately.
 
-4. **Set up pre-commit hooks**
+4. **Set up pre-commit hooks (Required for contributing)**
    ```bash
-   # Install pre-commit
-   pip install pre-commit
-
+   # Pre-commit is already installed with dev dependencies
    # Install the git hook scripts
    pre-commit install
 
    # (Optional) Run on all files to test setup
    pre-commit run --all-files
    ```
+   > **Note**: Pre-commit hooks will run automatically on every commit and may auto-fix formatting issues.
 
 ## 🧪 Running Tests
 
@@ -71,13 +72,18 @@ pytest tests/test_main.py -v
 
 ## 🛠️ Development Tools
 
-### Pre-commit Hooks Setup
+### Code Quality & Pre-commit
 
+This project uses multiple workflows for maintaining code quality:
+
+#### GitHub Actions
+- **`tests.yml`**: Runs pytest with coverage across Python 3.11-3.13
+- **`ci.yml`**: Enforces code quality with auto-fixing and validation
+
+#### Pre-commit Hooks Setup
 Pre-commit hooks automatically run code formatting, linting, and type checking before each commit to ensure code quality.
 ```bash
-# Install pre-commit
-pip install pre-commit
-
+# Pre-commit is already installed with dev dependencies
 # Install the git hook scripts
 pre-commit install
 
@@ -90,10 +96,12 @@ pre-commit run --all-files
 ## Features
 
 - ✅ Modern Python packaging with `pyproject.toml`
-- ✅ Automated testing with pytest
-- ✅ GitHub Actions CI/CD pipeline
-- ✅ Code coverage reporting
-- ✅ Type hints support
+- ✅ Automated testing with pytest and coverage
+- ✅ Dual GitHub Actions workflows (testing + code quality)
+- ✅ Pre-commit hooks for code quality enforcement
+- ✅ Type hints and mypy type checking
+- ✅ Code formatting with Black and isort
+- ✅ Linting with flake8
 - ✅ Pre-configured `.gitignore`
 
 ## Project Structure
@@ -102,7 +110,8 @@ pre-commit run --all-files
 python-template/
 ├── .github/
 │   └── workflows/
-│       └── tests.yml          # GitHub Actions CI/CD
+│       ├── tests.yml          # GitHub Actions - Testing
+│       └── ci.yml             # GitHub Actions - Code Quality
 ├── src/
 │   └── hello_world/
 │       ├── __init__.py        # Package initialization
@@ -111,12 +120,16 @@ python-template/
 │   ├── __init__.py            # Test package initialization
 │   └── test_main.py           # Unit tests
 ├── .gitignore                 # Git ignore rules
+├── .pre-commit-config.yaml    # Pre-commit hooks configuration
 ├── README.md                  # Project documentation
-├── pyproject.toml             # Modern Python packaging
+├── pyproject.toml             # Modern Python packaging & tool config
+├── pytest.ini                # Pytest configuration
 └── requirements-dev.txt       # Development dependencies
 ```
 
-## Installation
+## Quick Setup (Alternative)
+
+If you prefer the minimal approach:
 
 1. Clone the repository:
    ```bash
@@ -126,13 +139,13 @@ python-template/
 
 2. Create a virtual environment:
    ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   python3 -m venv .venv
+   source .venv/bin/activate  # On Windows: .\.venv\Scripts\activate
    ```
 
 3. Install dependencies:
    ```bash
-   pip install -r requirements-dev.txt
+   pip install -e ".[dev]"
    ```
 
 ## Usage
