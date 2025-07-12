@@ -34,17 +34,17 @@ jobs:
       run: |
         isort src/ tests/
 
-    - name: Commit auto-fixes
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add -A
-        git diff --staged --quiet || git commit -m "style: Auto-fix code formatting [skip ci]"
+    # - name: Commit auto-fixes
+    #   run: |
+    #     git config --local user.email "action@github.com"
+    #     git config --local user.name "GitHub Action"
+    #     git add -A
+    #     git diff --staged --quiet || git commit -m "style: Auto-fix code formatting [skip ci]"
 
-    - name: Push auto-fixes
-      if: github.event_name == 'push'
-      run: |
-        git push
+    # - name: Push auto-fixes
+    #   if: github.event_name == 'push'
+    #   run: |
+    #     git push
 
     - name: Run flake8
       run: |
