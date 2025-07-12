@@ -12,13 +12,16 @@ and this project adheres to [Calendar Versioning](https://calver.org/).
 ### Added
 - Initial project setup with modern Python packaging
 - Comprehensive test suite with pytest
-- GitHub Actions CI/CD pipeline
 - Code quality tools (black, isort, flake8, mypy)
 - Pre-commit hooks configuration
 - Type hints throughout the codebase
 
 ### Changed
 - Updated documentation with better examples and usage instructions
+- Refactored GitHub Actions workflows for better separation of concerns
+  - Split single `tests.yml` into dedicated `tests.yml` and `ci.yml` workflows
+  - Removed `continue-on-error` from code quality checks to enforce standards
+  - Added auto-fixing capabilities for black and isort in CI pipeline
 
 ### Fixed
 - N/A
