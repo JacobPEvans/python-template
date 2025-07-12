@@ -37,3 +37,4 @@ jobs:
       if: matrix.python-version == '3.12'
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
+        slug: JacobPEvans/python-template
