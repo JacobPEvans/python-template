@@ -41,6 +41,18 @@ A minimal Python project template following modern best practices and industry s
    pip install -e .
    ```
 
+4. **Set up pre-commit hooks**
+   ```bash
+   # Install pre-commit
+   pip install pre-commit
+
+   # Install the git hook scripts
+   pre-commit install
+
+   # (Optional) Run on all files to test setup
+   pre-commit run --all-files
+   ```
+
 ## 🧪 Running Tests
 
 ```bash
@@ -59,32 +71,21 @@ pytest tests/test_main.py -v
 
 ## 🛠️ Development Tools
 
-### Code Formatting & Linting
-```bash
-# Format code with Black
-black src/ tests/
+### Pre-commit Hooks Setup
 
-# Sort imports with isort
-isort src/ tests/
-
-# Lint with flake8
-flake8 src/ tests/
-
-# Type checking with mypy
-mypy src/
-```
-
-### Pre-commit Hooks
+Pre-commit hooks automatically run code formatting, linting, and type checking before each commit to ensure code quality.
 ```bash
 # Install pre-commit
 pip install pre-commit
 
-# Install hooks
+# Install the git hook scripts
 pre-commit install
 
-# Run hooks manually
+# Test the setup
 pre-commit run --all-files
 ```
+
+> **Note**: Once installed, pre-commit will automatically run on every `git commit`. If any checks fail, the commit will be blocked until issues are fixed. Code formatting tools like Black and isort will auto-fix many issues.
 
 ## Features
 
@@ -112,7 +113,7 @@ python-template/
 ├── .gitignore                 # Git ignore rules
 ├── README.md                  # Project documentation
 ├── pyproject.toml             # Modern Python packaging
-└── requirements.txt           # Dependencies
+└── requirements-dev.txt       # Development dependencies
 ```
 
 ## Installation
@@ -131,7 +132,7 @@ python-template/
 
 3. Install dependencies:
    ```bash
-   pip install -r requirements.txt
+   pip install -r requirements-dev.txt
    ```
 
 ## Usage
@@ -139,15 +140,15 @@ python-template/
 Run the hello world application:
 
 ```bash
-python -m src.hello_world.main
+python -m hello_world.main
 ```
 
 Or import and use in your code:
 
 ```python
-from src.hello_world import hello_world
+from hello_world import greet
 
-print(hello_world("Python"))  # Output: Hello, Python!
+print(greet("Python"))  # Output: Hello, Python!
 ```
 
 ## Development

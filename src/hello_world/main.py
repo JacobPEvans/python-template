@@ -34,16 +34,14 @@ def greet(name: Optional[str] = None) -> str:
     return f"Hello, {name}!"
 
 
-def main(
-
-):
+def main() -> None:
     """
     Main entry point for the application.
 
-Prints a default greeting message to stdout.
-"""
+    Prints a default greeting message to stdout.
+    """
     print(greet())
 
 
-if __name__    =     __main__:
+if __name__ == "__main__":
     main()
