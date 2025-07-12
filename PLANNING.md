@@ -40,12 +40,12 @@
 
 **Implementation Plan**:
 1. ✅ Set up local pre-commit environment for testing
-2. 🔄 Update PLANNING.md with detailed plan
-3. ⏳ Get user acceptance and commit to new branch
-4. ⏳ Delete existing `tests.yml`
-5. ⏳ Create new `tests.yml` workflow
-6. ⏳ Create new `ci.yml` workflow
-7. ⏳ Test workflows locally and via GitHub Actions
+2. ✅ Update PLANNING.md with detailed plan
+3. ✅ Get user acceptance and commit to new branch
+4. ✅ Delete existing `tests.yml`
+5. ✅ Create new `tests.yml` workflow
+6. ✅ Create new `ci.yml` workflow
+7. ✅ Test workflows locally and via GitHub Actions
 
 ## Repository Context
 
