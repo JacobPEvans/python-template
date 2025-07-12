@@ -37,7 +37,7 @@ def greet(name: Optional[str] = None) -> str:
 def main() -> None:
     """
     Main entry point for the application.
-    
+
     Prints a default greeting message to stdout.
     """
     print(greet())
