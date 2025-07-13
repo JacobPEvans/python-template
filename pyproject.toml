@@ -42,6 +42,7 @@ source = ["src"]
 omit = ["*/tests/*", "*/test_*.py"]
 
 [tool.coverage.report]
+fail_under = 100
 exclude_lines = [
     "pragma: no cover",
     "def __repr__",
@@ -51,6 +52,7 @@ exclude_lines = [
     "raise NotImplementedError",
     "if 0:",
     "if __name__ == .__main__.:",
+    "if TYPE_CHECKING:",
     "class .*\\bProtocol\\):",
     "@(abc\\.)?abstractmethod",
 ]
