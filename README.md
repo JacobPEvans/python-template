@@ -67,12 +67,20 @@ pytest
 # Run tests with coverage
 pytest --cov=src/hello_world --cov-report=html
 
+# Run tests with coverage (same as GitHub Actions/CodeCov) - REQUIRES 100% coverage
+pytest --cov --cov-branch --cov-report=xml --cov-fail-under=100
+
 # Run tests in verbose mode
 pytest -v
 
 # Run specific test file
 pytest tests/test_main.py -v
 ```
+
+>  100% Code Coverage Required**
+>
+> This project enforces 100% code coverage.
+> Use the coverage command above to ensure your changes meet this requirement before committing.
 
 ## 🛠️ Development Tools
 
@@ -179,7 +187,11 @@ pytest tests/ -v
 ### Running Tests with Coverage
 
 ```bash
+# Generate HTML coverage report
 pytest tests/ -v --cov=src/hello_world --cov-report=html
+
+# Generate XML coverage report (used by CodeCov in CI) - REQUIRES 100% coverage
+pytest --cov --cov-branch --cov-report=xml --cov-fail-under=100
 ```
 
 ### Installing in Development Mode
@@ -192,6 +204,7 @@ pip install -e .
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+3. Run tests with coverage before committing (`pytest --cov --cov-branch --cov-report=xml --cov-fail-under=100`) - **Must achieve 100% coverage**
+4. Commit your changes (`git commit -m 'Add some amazing feature'`)
+5. Push to the branch (`git push origin feature/amazing-feature`)
+6. Open a Pull Request

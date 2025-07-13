@@ -7,7 +7,7 @@ Created: July 12, 2025
 
 import pytest
 
-from hello_world.main import greet
+from hello_world.main import greet, main
 
 
 class TestGreetFunction:
@@ -41,3 +41,13 @@ class TestGreetFunction:
     def test_greet_parametrized(self, name: str, expected: str) -> None:
         """Test greet function with various inputs using parametrization."""
         assert greet(name) == expected
+
+
+class TestMainFunction:
+    """Test cases for the main function."""
+
+    def test_main_prints_greeting(self, capsys: pytest.CaptureFixture[str]) -> None:
+        """Test that main function prints the default greeting."""
+        main()
+        captured = capsys.readouterr()
+        assert captured.out == "Hello, World!\n"

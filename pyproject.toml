@@ -42,6 +42,7 @@ source = ["src"]
 omit = ["*/tests/*", "*/test_*.py"]
 
 [tool.coverage.report]
+fail_under = 100
 exclude_lines = [
     "pragma: no cover",
     "def __repr__",
@@ -79,6 +80,9 @@ profile = "black"
 multi_line_output = 3
 line_length = 120
 known_first_party = ["hello_world"]
+
+[tool.flake8]
+max-line-length = 120
 
 [tool.mypy]
 python_version = "3.11"
