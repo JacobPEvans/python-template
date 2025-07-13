@@ -8,7 +8,10 @@ Author: JacobPEvans
 Created: July 12, 2025
 """
 
+import logging
 from typing import Optional
+
+logger = logging.getLogger(__name__)
 
 
 def greet(name: Optional[str] = None) -> str:
@@ -30,7 +33,10 @@ def greet(name: Optional[str] = None) -> str:
         'Hello, World!'
     """
     if not name:
+        logger.info("No name provided, defaulting to 'World'")
         name = "World"
+    else:
+        logger.info(f"Name provided: {name}")
     return f"Hello, {name}!"
 
 
