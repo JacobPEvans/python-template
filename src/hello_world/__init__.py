@@ -1,5 +1,4 @@
-"""
-Hello World package.
+"""Hello World package.
 
 A simple Python package template demonstrating best practices.
 
@@ -7,20 +6,56 @@ Author: JacobPEvans
 Created: July 12, 2025
 """
 
-import logging.config
-import os
+from __future__ import annotations
 
-from .main import greet
+import logging.config
+from pathlib import Path
+
+from hello_world.exceptions import (
+    BatchGreetingError,
+    ConfigurationError,
+    GreetingError,
+    HelloWorldError,
+    ValidationError,
+)
+from hello_world.main import (
+    create_greeting_template,
+    format_greeting,
+    greet,
+    greet_many,
+)
+from hello_world.validators import (
+    validate_name,
+    validate_names_batch,
+    validate_positive_int,
+)
+
 
 # Construct the full path to the logging configuration file
-config_path = os.path.join(os.path.dirname(__file__), "logging.conf")
+_config_path = Path(__file__).parent / "logging.conf"
 
 # Configure the logging using the file
-if os.path.exists(config_path):
-    logging.config.fileConfig(config_path)
+if _config_path.exists():
+    logging.config.fileConfig(_config_path)
 
 __version__ = "0.1.0"
 __author__ = "JacobPEvans"
 __email__ = "20714140+JacobPEvans@users.noreply.github.com"
 
-__all__ = ["greet"]
+__all__ = [
+    "BatchGreetingError",
+    "ConfigurationError",
+    "GreetingError",
+    "HelloWorldError",
+    "ValidationError",
+    "__author__",
+    "__email__",
+    "__version__",
+    "create_greeting_template",
+    "format_greeting",
+    "greet",
+    "greet_many",
+    "validate_name",
+    "validate_names_batch",
+    "validate_positive_int",
+]
