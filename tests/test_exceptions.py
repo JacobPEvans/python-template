@@ -93,9 +93,7 @@ class TestValidationError:
         assert isinstance(error, Exception)
 
     @pytest.mark.unit
-    def test_validation_error_with_fixture(
-        self, sample_validation_error: dict[str, object]
-    ) -> None:
+    def test_validation_error_with_fixture(self, sample_validation_error: dict[str, object]) -> None:
         """Test ValidationError creation using fixture."""
         error = ValidationError(**sample_validation_error)  # type: ignore[arg-type]
         assert error.field == sample_validation_error["field"]
@@ -133,9 +131,7 @@ class TestConfigurationError:
         assert isinstance(error, HelloWorldError)
 
     @pytest.mark.unit
-    def test_configuration_error_with_fixture(
-        self, sample_configuration_error: dict[str, str]
-    ) -> None:
+    def test_configuration_error_with_fixture(self, sample_configuration_error: dict[str, str]) -> None:
         """Test ConfigurationError creation using fixture."""
         error = ConfigurationError(**sample_configuration_error)
         assert error.config_key == sample_configuration_error["config_key"]
