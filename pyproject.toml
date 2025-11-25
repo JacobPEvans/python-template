@@ -20,10 +20,7 @@ classifiers = [
 
 [project.optional-dependencies]
 dev = [
-    # Formatting
-    "black>=25.1.0",
-    # Linting (keeping flake8 for compatibility, but Ruff is preferred)
-    "flake8>=7.3.0",
+    # Linting & Formatting (Ruff replaces black, flake8, isort, pylint, pyupgrade)
     "ruff>=0.8.0",
     # Type checking
     "mypy>=1.16.1",
@@ -80,24 +77,6 @@ exclude_lines = [
     "class .*\\bProtocol\\):",
     "@(abc\\.)?abstractmethod",
 ]
-
-[tool.black]
-line-length = 120
-target-version = ['py311']
-include = '\.pyi?$'
-extend-exclude = '''
-/(
-  # directories
-  \.eggs
-  | \.git
-  | \.hg
-  | \.mypy_cache
-  | \.tox
-  | \.venv
-  | build
-  | dist
-)/
-'''
 
 [tool.mypy]
 python_version = "3.11"

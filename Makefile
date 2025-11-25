@@ -40,11 +40,9 @@ install-dev: ## Install package with development dependencies
 # Code Quality
 # =============================================================================
 
-lint: ## Run all linters (ruff, flake8, mypy)
+lint: ## Run Ruff linter
 	@echo "$(BLUE)Running Ruff...$(RESET)"
 	ruff check $(SRC_DIR) $(TEST_DIR)
-	@echo "$(BLUE)Running flake8...$(RESET)"
-	flake8 $(SRC_DIR) $(TEST_DIR)
 	@echo "$(GREEN)All linting passed!$(RESET)"
 
 lint-fix: ## Run linters with auto-fix enabled
@@ -52,19 +50,15 @@ lint-fix: ## Run linters with auto-fix enabled
 	ruff check --fix $(SRC_DIR) $(TEST_DIR)
 	@echo "$(GREEN)Auto-fix complete!$(RESET)"
 
-format: ## Format code with Ruff and Black
+format: ## Format code with Ruff
 	@echo "$(BLUE)Formatting and sorting imports with Ruff...$(RESET)"
 	ruff check --fix $(SRC_DIR) $(TEST_DIR)
 	ruff format $(SRC_DIR) $(TEST_DIR)
-	@echo "$(BLUE)Formatting with Black...$(RESET)"
-	black $(SRC_DIR) $(TEST_DIR)
 	@echo "$(GREEN)Formatting complete!$(RESET)"
 
 format-check: ## Check code formatting without making changes
 	@echo "$(BLUE)Checking Ruff format...$(RESET)"
 	ruff format --check $(SRC_DIR) $(TEST_DIR)
-	@echo "$(BLUE)Checking Black formatting...$(RESET)"
-	black --check $(SRC_DIR) $(TEST_DIR)
 	@echo "$(GREEN)Format check passed!$(RESET)"
 
 type-check: ## Run mypy type checker

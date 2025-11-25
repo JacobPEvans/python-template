@@ -2,12 +2,8 @@
 # Prefer using: pip install -e ".[dev]"
 # This file is kept for compatibility with tools that require requirements.txt
 
-# Formatting
-black>=25.1.0
+# Linting & Formatting (Ruff replaces black, flake8, isort, pylint, pyupgrade)
 ruff>=0.8.0
-
-# Linting
-flake8>=7.3.0
 
 # Type checking
 mypy>=1.16.1

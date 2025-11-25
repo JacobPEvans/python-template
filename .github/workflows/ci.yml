@@ -33,14 +33,6 @@ jobs:
       run: |
         ruff check src/ tests/
 
-    - name: Check formatting with Black
-      run: |
-        black --check src/ tests/
-
-    - name: Lint with flake8
-      run: |
-        flake8 src/ tests/
-
   type-check:
     name: Type Check
     runs-on: ubuntu-latest
