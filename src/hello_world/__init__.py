@@ -30,7 +30,6 @@ from hello_world.validators import (
     validate_positive_int,
 )
 
-
 # Construct the full path to the logging configuration file
 _config_path = Path(__file__).parent / "logging.conf"
 

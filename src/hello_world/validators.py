@@ -12,12 +12,10 @@ import functools
 import re
 from typing import TYPE_CHECKING, ParamSpec, TypeVar
 
-
 if TYPE_CHECKING:
     from collections.abc import Callable, Sequence
 
 from hello_world.exceptions import ValidationError
-
 
 # Type variables for generic decorators
 P = ParamSpec("P")

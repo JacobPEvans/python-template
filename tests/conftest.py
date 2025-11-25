@@ -14,7 +14,6 @@ from unittest.mock import MagicMock
 
 import pytest
 
-
 if TYPE_CHECKING:
     from collections.abc import Generator
 
