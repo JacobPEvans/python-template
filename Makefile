@@ -52,22 +52,19 @@ lint-fix: ## Run linters with auto-fix enabled
 	ruff check --fix $(SRC_DIR) $(TEST_DIR)
 	@echo "$(GREEN)Auto-fix complete!$(RESET)"
 
-format: ## Format code with black and isort
+format: ## Format code with Ruff and Black
+	@echo "$(BLUE)Formatting and sorting imports with Ruff...$(RESET)"
+	ruff check --fix $(SRC_DIR) $(TEST_DIR)
+	ruff format $(SRC_DIR) $(TEST_DIR)
 	@echo "$(BLUE)Formatting with Black...$(RESET)"
 	black $(SRC_DIR) $(TEST_DIR)
-	@echo "$(BLUE)Sorting imports with isort...$(RESET)"
-	isort $(SRC_DIR) $(TEST_DIR)
-	@echo "$(BLUE)Formatting with Ruff...$(RESET)"
-	ruff format $(SRC_DIR) $(TEST_DIR)
 	@echo "$(GREEN)Formatting complete!$(RESET)"
 
 format-check: ## Check code formatting without making changes
-	@echo "$(BLUE)Checking Black formatting...$(RESET)"
-	black --check $(SRC_DIR) $(TEST_DIR)
-	@echo "$(BLUE)Checking isort...$(RESET)"
-	isort --check-only $(SRC_DIR) $(TEST_DIR)
 	@echo "$(BLUE)Checking Ruff format...$(RESET)"
 	ruff format --check $(SRC_DIR) $(TEST_DIR)
+	@echo "$(BLUE)Checking Black formatting...$(RESET)"
+	black --check $(SRC_DIR) $(TEST_DIR)
 	@echo "$(GREEN)Format check passed!$(RESET)"
 
 type-check: ## Run mypy type checker

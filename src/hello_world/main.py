@@ -12,11 +12,13 @@ from __future__ import annotations
 import logging
 from typing import TYPE_CHECKING
 
+
 if TYPE_CHECKING:
     from collections.abc import Iterable
 
 from hello_world.exceptions import BatchGreetingError, GreetingError
 from hello_world.validators import validate_name
+
 
 logger = logging.getLogger(__name__)
 

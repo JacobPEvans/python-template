@@ -24,7 +24,6 @@ dev = [
     "black>=25.1.0",
     # Linting (keeping flake8 for compatibility, but Ruff is preferred)
     "flake8>=7.3.0",
-    "isort>=6.0.1",
     "ruff>=0.8.0",
     # Type checking
     "mypy>=1.16.1",
@@ -99,12 +98,6 @@ extend-exclude = '''
   | dist
 )/
 '''
-
-[tool.isort]
-profile = "black"
-multi_line_output = 3
-line_length = 120
-known_first_party = ["hello_world"]
 
 [tool.mypy]
 python_version = "3.11"
@@ -204,8 +197,6 @@ ignore = [
     "ISC001", # Single line implicit string concatenation (conflicts with formatter)
     "TD003",  # Missing issue link on TODO
     "FIX002", # Line contains TODO
-    "I001",   # Import block is un-sorted (using isort instead)
-    "I002",   # Missing required import (using isort instead)
 ]
 
 [tool.ruff.lint.per-file-ignores]

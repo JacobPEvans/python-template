@@ -33,7 +33,7 @@ repos:
         args: ['--branch', 'main', '--branch', 'master']
       - id: trailing-whitespace
 
-  # Ruff - Fast Python linter and formatter (replaces flake8, isort, etc.)
+  # Ruff - Fast Python linter and formatter (replaces flake8, isort, pylint, etc.)
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.8.0
     hooks:
@@ -46,12 +46,6 @@ repos:
     rev: 25.1.0
     hooks:
       - id: black
-
-  # isort - Import sorter (keeping for compatibility)
-  - repo: https://github.com/pycqa/isort
-    rev: 6.0.1
-    hooks:
-      - id: isort
 
   # flake8 - Style guide enforcement (keeping for compatibility)
   - repo: https://github.com/pycqa/flake8
