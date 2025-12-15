@@ -168,7 +168,7 @@ class TestValidateNamesBatch:
     def test_batch_invalid_type_raises(self) -> None:
         """Test that invalid type raises ValidationError."""
         with pytest.raises(ValidationError) as exc_info:
-            validate_names_batch("not a list")  # type: ignore[arg-type]
+            validate_names_batch("not a list")
         assert exc_info.value.field == "names"
         assert "list or tuple" in exc_info.value.reason
 
@@ -217,7 +217,7 @@ class TestValidatePositiveInt:
     def test_bool_raises(self) -> None:
         """Test that booleans raise ValidationError."""
         with pytest.raises(ValidationError):
-            validate_positive_int(True)  # type: ignore[arg-type]
+            validate_positive_int(True)
 
     @pytest.mark.unit
     def test_custom_field_name(self) -> None:
@@ -280,13 +280,37 @@ class TestValidatedDecorator:
 
     @pytest.mark.unit
     def test_decorator_with_positional_args(self) -> None:
-        """Test that decorator works with positional arguments (arg not in kwargs)."""
+        """Test that decorator validates positional arguments."""
 
         @validated(validate_name, "name")
         def greet(name: str | None = None) -> str:
             return f"Hello, {name or 'World'}!"
 
-        # Call with positional argument - won't be validated since not in kwargs
+        # Call with positional argument - should be validated and stripped
+        result = greet("  Alice  ")
+        assert result == "Hello, Alice!"
+
+    @pytest.mark.unit
+    def test_decorator_positional_arg_validation_error(self) -> None:
+        """Test that decorator raises ValidationError for invalid positional args."""
+
+        @validated(validate_name, "name")
+        def greet(name: str | None = None) -> str:
+            return f"Hello, {name or 'World'}!"
+
+        # Call with positional argument that has invalid characters
+        with pytest.raises(ValidationError):
+            greet("Test<script>")
+
+    @pytest.mark.unit
+    def test_decorator_with_different_arg_name(self) -> None:
+        """Test decorator when arg_name doesn't match function parameters."""
+
+        @validated(validate_name, "nonexistent_param")
+        def greet(name: str | None = None) -> str:
+            return f"Hello, {name or 'World'}!"
+
+        # Should work without validation since arg_name doesn't match
         result = greet("Alice")
         assert result == "Hello, Alice!"
 

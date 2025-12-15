@@ -4,6 +4,8 @@ Author: JacobPEvans
 Created: July 12, 2025
 """
 
+from unittest.mock import MagicMock
+
 import pytest
 from hypothesis import given, settings
 from hypothesis import strategies as st
@@ -99,7 +101,7 @@ class TestGreetFunction:
         assert result == "Hello, World!"
 
     @pytest.mark.unit
-    def test_greet_logs_info(self, mock_logger) -> None:
+    def test_greet_logs_info(self, mock_logger: MagicMock) -> None:
         """Test that greet function logs appropriately."""
         greet("TestUser")
         mock_logger.info.assert_called()
@@ -108,7 +110,7 @@ class TestGreetFunction:
         assert "TestUser" in call_args_str
 
     @pytest.mark.unit
-    def test_greet_logs_default(self, mock_logger) -> None:
+    def test_greet_logs_default(self, mock_logger: MagicMock) -> None:
         """Test that greet function logs when using default."""
         greet(None)
         mock_logger.info.assert_called()
@@ -232,6 +234,14 @@ class TestFormatGreeting:
         template = "Hey, {name}."
         result = format_greeting(template, "")
         assert result == "Hey, World."
+
+    @pytest.mark.unit
+    def test_format_with_invalid_name_falls_back_to_world(self) -> None:
+        """Test formatting with invalid name falls back to World."""
+        template = "Hello, {name}!"
+        # Name with invalid characters should fall back to World
+        result = format_greeting(template, "Test<script>")
+        assert result == "Hello, World!"
 
 
 class TestMainFunction:

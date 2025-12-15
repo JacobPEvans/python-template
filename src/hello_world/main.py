@@ -16,7 +16,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from collections.abc import Iterable
 
-from hello_world.exceptions import BatchGreetingError, GreetingError
+from hello_world.exceptions import BatchGreetingError, GreetingError, ValidationError
 from hello_world.validators import validate_name
 
 
@@ -47,7 +47,7 @@ def greet(name: str | None = None, *, strict: bool = False) -> str:
     """
     try:
         validated_name = validate_name(name)
-    except Exception as e:
+    except ValidationError as e:
         if strict:
             raise GreetingError(
                 error_type="validation_failed",
@@ -73,8 +73,12 @@ def greet_many(
 ) -> list[str]:
     """Generate greetings for multiple names.
 
+    Note:
+        The input iterable is fully consumed into a list before processing.
+        For large iterables or generators, be aware of memory usage.
+
     Args:
-        names: An iterable of names to greet.
+        names: An iterable of names to greet. Will be consumed into a list.
         strict: If True, raises BatchGreetingError if any greetings fail.
                 If False, uses "World" for failed names.
 
@@ -138,7 +142,8 @@ def format_greeting(template: str, name: str | None = None) -> str:
 
     Args:
         template: A template string with a {name} placeholder.
-        name: The name to insert. Defaults to "World" if None or empty.
+        name: The name to insert. Defaults to "World" if None, empty,
+            or invalid.
 
     Returns:
         The formatted greeting string.
@@ -149,7 +154,11 @@ def format_greeting(template: str, name: str | None = None) -> str:
         >>> format_greeting("Hi, {name}?", None)
         'Hi, World?'
     """
-    validated_name = validate_name(name) or "World"
+    try:
+        validated_name = validate_name(name) or "World"
+    except ValidationError:
+        logger.warning("Name validation failed in format_greeting, defaulting to 'World'.")
+        validated_name = "World"
     return template.format(name=validated_name)
 
 

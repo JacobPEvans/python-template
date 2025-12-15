@@ -9,6 +9,7 @@ Author: JacobPEvans
 from __future__ import annotations
 
 import functools
+import inspect
 import re
 from typing import TYPE_CHECKING, ParamSpec, TypeVar
 
@@ -87,7 +88,7 @@ def validate_names_batch(names: Sequence[str | None]) -> list[str | None]:
         >>> validate_names_batch(["Alice", "Bob", None])
         ['Alice', 'Bob', None]
     """
-    if not isinstance(names, (list, tuple)):
+    if not isinstance(names, list | tuple):
         msg = "must be a list or tuple"
         raise ValidationError(field="names", value=type(names).__name__, reason=msg)
 
@@ -153,6 +154,9 @@ def validated(
     Creates a decorator that validates a specific argument using
     the provided validator function before calling the wrapped function.
 
+    This decorator handles both positional and keyword arguments by using
+    inspect.signature to bind arguments to their parameter names.
+
     Args:
         validator: The validation function to apply.
         arg_name: The name of the argument to validate.
@@ -169,12 +173,21 @@ def validated(
     """
 
     def decorator(func: Callable[P, R]) -> Callable[P, R]:
+        sig = inspect.signature(func)
+
         @functools.wraps(func)
         def wrapper(*args: P.args, **kwargs: P.kwargs) -> R:
-            # Get the argument value from kwargs or positional args
-            if arg_name in kwargs:
-                kwargs[arg_name] = validator(kwargs[arg_name])  # type: ignore[arg-type]
-            return func(*args, **kwargs)
+            # Bind positional and keyword arguments to parameter names
+            bound_args = sig.bind(*args, **kwargs)
+            bound_args.apply_defaults()
+
+            # Validate the specified argument if present
+            if arg_name in bound_args.arguments:
+                validated_value = validator(bound_args.arguments[arg_name])
+                bound_args.arguments[arg_name] = validated_value
+
+            # Call the original function with potentially modified arguments
+            return func(*bound_args.args, **bound_args.kwargs)
 
         return wrapper
 

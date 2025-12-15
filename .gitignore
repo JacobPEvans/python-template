@@ -11,7 +11,8 @@ __pycache__/
 venv/
 ENV/
 env/
-.env
+env.bak/
+venv.bak/
 
 # IDE / Editor
 .vscode/
@@ -37,9 +38,11 @@ htmlcov/
 .tox/
 .nox/
 coverage.xml
+nosetests.xml
 *.cover
 *.py,cover
 .hypothesis/
+cover/
 
 # Distribution / packaging
 .Python
@@ -64,15 +67,6 @@ MANIFEST
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
-.pytest_cache/
-cover/
 
 # Translations
 *.mo
@@ -102,14 +96,10 @@ celerybeat.pid
 # SageMath parsed files
 *.sage.py
 
-# Environments
+# Environment files
 .env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+.env.local
+.env.*.local
 
 # Spyder project settings
 .spyderproject
@@ -123,8 +113,6 @@ venv.bak/
 
 # Local configuration
 *.local
-.env.local
-.env.*.local
 
 # Logs
 *.log

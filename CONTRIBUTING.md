@@ -44,13 +44,15 @@ By participating in this project, you agree to maintain a respectful and inclusi
 
 ### Installation
 
+**Important:** Always use a virtual environment to isolate project dependencies from your system Python.
+
 1. Create and activate a virtual environment:
    ```bash
    python -m venv .venv
    source .venv/bin/activate  # On Windows: .venv\Scripts\activate
    ```
 
-2. Install development dependencies:
+2. Install development dependencies (inside the activated virtual environment):
    ```bash
    # Using make (recommended)
    make install-dev
@@ -65,20 +67,19 @@ By participating in this project, you agree to maintain a respectful and inclusi
    make check  # Or: pytest && ruff check src/ tests/
    ```
 
+**Note:** All `make` and `pytest` commands should be run within the activated virtual environment.
+
 ## Code Style
 
 This project enforces strict code quality standards using multiple tools:
 
 ### Formatting
 
-- **Black**: Code formatting with 120 character line length
-- **isort**: Import sorting (Black-compatible profile)
-- **Ruff**: Fast linter and formatter
+- **Ruff**: Fast all-in-one linter and formatter (handles formatting and import sorting)
 
 ### Linting
 
-- **Ruff**: Comprehensive linting (pyflakes, pycodestyle, pylint rules, etc.)
-- **flake8**: Style guide enforcement
+- **Ruff**: Comprehensive linting (pyflakes, pycodestyle, pylint rules, isort, and many more)
 - **mypy**: Static type checking (strict mode)
 - **bandit**: Security linting
 
@@ -136,7 +137,7 @@ make all
 ### Test Requirements
 
 - **100% code coverage is required** - All pull requests must maintain 100% coverage
-- Tests must pass on Python 3.11, 3.12, and 3.13
+- Tests must pass on Python 3.11 or higher
 - Use pytest for all tests
 
 ### Writing Tests
@@ -174,7 +175,7 @@ We use Hypothesis for property-based testing. When appropriate, add hypothesis t
 from hypothesis import given, strategies as st
 
 @given(st.text(min_size=1, max_size=50))
-def test_function_with_hypothesis(self, value: str) -> None:
+def test_function_with_hypothesis(value: str) -> None:
     """Property-based test for function."""
     result = some_function(value)
     assert some_property(result)
