@@ -8,7 +8,7 @@ A minimal Python project template following modern best practices and industry s
 
 **Author:** JacobPEvans
 **Created:** July 12, 2025
-**License:** Apache License 2.0
+**License:** [Apache License 2.0](LICENSE)
 **Python Version:** 3.11+
 
 ## 🚀 Quick Start
