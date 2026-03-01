@@ -13,7 +13,7 @@ on:
     branches:
       - main
 
-if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+if: ${{ github.event.workflow_run.conclusion == 'failure' || github.event.workflow_run.conclusion == 'cancelled' }}
 
 permissions: read-all
 
@@ -26,6 +26,7 @@ safe-outputs:
   add-comment:
 
 tools:
+  github:
   cache-memory: true
   web-fetch:
 

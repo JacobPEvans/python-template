@@ -19,6 +19,7 @@ safe-outputs:
   create-code-scanning-alert:
     driver: "Malicious Code Scanner"
   threat-detection: false
+  noop:
 timeout-minutes: 15
 strict: true
 ---
@@ -140,7 +141,9 @@ For each file that changed in the last 3 days:
 1. **Get the full diff** to understand what changed:
 
    ```bash
-   git log --since="3 days ago" --all -p -- $(cat /tmp/changed_files.txt | tr '\n' ' ') 2>/dev/null | head -2000
+   while IFS= read -r file; do
+     [ -n "$file" ] && git log --since="3 days ago" --all -p -- "$file" 2>/dev/null
+   done < /tmp/changed_files.txt | head -2000
    ```
 
 2. **Analyze new function additions** for suspicious logic:
@@ -199,7 +202,7 @@ When suspicious patterns are found, create code-scanning alerts with this struct
 
 ```json
 {
-  "create_code_scanning_alert": [
+  "create-code-scanning-alert": [
     {
       "rule_id": "malicious-code-scanner/[CATEGORY]",
       "message": "[Brief description of the threat]",
@@ -266,7 +269,7 @@ A successful malicious code scan:
 - Scans for secret exfiltration patterns
 - Detects out-of-context code
 - Checks for suspicious system operations
-- Calls the `create_code_scanning_alert` tool for findings OR `noop` if clean
+- Calls the `create-code-scanning-alert` tool for findings OR `noop` if clean
 - Provides detailed, actionable alert descriptions
 - Completes within 15-minute timeout
 - Handles repositories with no recent changes gracefully
@@ -276,7 +279,7 @@ A successful malicious code scan:
 Your output MUST:
 
 1. **If suspicious patterns are found**:
-   - **CALL** the `create_code_scanning_alert` tool for each finding
+   - **CALL** the `create-code-scanning-alert` tool for each finding
    - Each alert must include: `rule_id`, `message`, `severity`, `file_path`,
      `start_line`, `description`
    - Provide detailed descriptions explaining the threat and recommended remediation
