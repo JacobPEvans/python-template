@@ -8,6 +8,8 @@
   "words": [
     "celerybeat",
     "cloudant",
+    "dmypy",
+    "htmlcov",
     "nosetests",
     "pybuilder",
     "pyupgrade",
