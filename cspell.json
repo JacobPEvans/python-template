@@ -6,18 +6,35 @@
     "https://raw.githubusercontent.com/JacobPEvans/.github/main/cspell/base.json"
   ],
   "words": [
+    "addinivalue",
+    "addopts",
+    "autouse",
+    "caplog",
+    "capsys",
     "celerybeat",
     "cloudant",
+    "conftest",
+    "datefmt",
+    "datetimez",
     "dmypy",
+    "ehthumbs",
+    "errmsg",
+    "flynt",
+    "furb",
     "htmlcov",
     "nosetests",
+    "perflint",
     "pybuilder",
+    "pydevproject",
+    "pygrep",
     "pyupgrade",
-    "ehthumbs",
+    "refurb",
     "ropeproject",
     "spyder",
     "spyderproject",
-    "spyproject"
+    "spyproject",
+    "testpaths",
+    "tryceratops"
   ],
   "ignorePaths": [".git", "node_modules", "*.lock"]
 }
