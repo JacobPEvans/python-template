@@ -1,13 +1,44 @@
 {
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
   "version": "0.2",
   "language": "en",
+  "import": [
+    "https://raw.githubusercontent.com/JacobPEvans/.github/main/cspell/base.json"
+  ],
   "words": [
-    "agentic",
-    "toolsets",
-    "backdoors",
-    "unshallow",
-    "exfiltration",
-    "unsanitized",
-    "tinyurl"
+    "addinivalue",
+    "addopts",
+    "autouse",
+    "caplog",
+    "capsys",
+    "celerybeat",
+    "cloudant",
+    "conftest",
+    "datefmt",
+    "datetimez",
+    "dmypy",
+    "ehthumbs",
+    "errmsg",
+    "flynt",
+    "furb",
+    "htmlcov",
+    "nosetests",
+    "perflint",
+    "pybuilder",
+    "pydevproject",
+    "pygrep",
+    "pyupgrade",
+    "refurb",
+    "ropeproject",
+    "spyder",
+    "spyderproject",
+    "spyproject",
+    "testpaths",
+    "tryceratops"
+  ],
+  "ignorePaths": [".git", "node_modules", "*.lock"],
+  "ignoreRegExpList": [
+    "/[\\u0400-\\u04FF]+/gu",
+    "/[\\u0600-\\u06FF]+/gu"
   ]
 }
