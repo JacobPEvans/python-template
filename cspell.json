@@ -1,13 +1,21 @@
 {
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
   "version": "0.2",
   "language": "en",
+  "import": [
+    "https://raw.githubusercontent.com/JacobPEvans/.github/main/cspell/base.json"
+  ],
   "words": [
-    "agentic",
-    "toolsets",
-    "backdoors",
-    "unshallow",
-    "exfiltration",
-    "unsanitized",
-    "tinyurl"
-  ]
+    "celerybeat",
+    "cloudant",
+    "nosetests",
+    "pybuilder",
+    "pyupgrade",
+    "ehthumbs",
+    "ropeproject",
+    "spyder",
+    "spyderproject",
+    "spyproject"
+  ],
+  "ignorePaths": [".git", "node_modules", "*.lock"]
 }
