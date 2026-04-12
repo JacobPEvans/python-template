@@ -34,9 +34,11 @@
     "spyderproject",
     "spyproject",
     "testpaths",
-    "tryceratops"
+    "tryceratops",
+    "githubnext",
+    "agentics"
   ],
-  "ignorePaths": [".git", "node_modules", "*.lock"],
+  "ignorePaths": [".git", "node_modules", "*.lock", "*.lock.yml", ".github/aw/**"],
   "ignoreRegExpList": [
     "/[\\u0400-\\u04FF]+/gu",
     "/[\\u0600-\\u06FF]+/gu"
