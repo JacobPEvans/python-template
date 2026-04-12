@@ -91,7 +91,7 @@ repos:
     hooks:
       - id: detect-secrets
         args: ['--baseline', '.secrets.baseline']
-        exclude: package.lock.json
+        exclude: 'package\.lock\.json|\.lock\.yml$|\.github/aw/'
 
 ci:
   autofix_commit_msg: |
