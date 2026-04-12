@@ -36,5 +36,9 @@
     "testpaths",
     "tryceratops"
   ],
-  "ignorePaths": [".git", "node_modules", "*.lock"]
+  "ignorePaths": [".git", "node_modules", "*.lock"],
+  "ignoreRegExpList": [
+    "/[\\u0400-\\u04FF]+/gu",
+    "/[\\u0600-\\u06FF]+/gu"
+  ]
 }
