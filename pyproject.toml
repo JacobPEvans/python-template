@@ -2,14 +2,16 @@
 requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
+# TEMPLATE: After forking, replace the placeholders below.
+# See TEMPLATE.md for the full instantiation checklist.
 [project]
-name = "hello-world"
+name = "REPLACE_ME-project-name"
 version = "0.1.0"
 license = {text = "Apache-2.0"}
 authors = [
-    {name = "Your Name", email = "your.email@example.com"},
+    {name = "REPLACE_ME Author", email = "replace-me@example.com"},
 ]
-description = "A simple Python project template"
+description = "REPLACE_ME — short project description"
 readme = "README.md"
 requires-python = ">=3.11"
 classifiers = [
@@ -202,6 +204,7 @@ convention = "google"
 max-complexity = 10
 
 [tool.ruff.lint.isort]
+# TEMPLATE: replace "hello_world" with the actual package name (matches src/<package>/).
 known-first-party = ["hello_world"]
 force-single-line = false
 lines-after-imports = 2
