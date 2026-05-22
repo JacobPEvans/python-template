@@ -83,8 +83,14 @@ jobs:
         bandit -r src/ -c pyproject.toml
 
     - name: Run pip-audit for dependency vulnerabilities
+      # Disputed/contextual transitive vulnerabilities with no upstream fix.
+      # Review quarterly and remove once upstream patches land.
+      #   PYSEC-2024-277 — joblib 1.5.3 NumpyArrayWrapper deserialization.
+      #     Disputed by supplier (only used during caching of trusted content).
+      #   PYSEC-2026-97 — nltk 3.9.4 filestring() arbitrary file read.
+      #     Requires user-controlled path input; not exposed by template code.
       run: |
-        pip-audit
+        pip-audit --ignore-vuln PYSEC-2024-277 --ignore-vuln PYSEC-2026-97
 
   docs:
     name: Documentation Check
