@@ -10,7 +10,6 @@ mypy>=1.16.1
 
 # Security
 bandit[toml]>=1.8.0
-safety>=3.0.0
 pip-audit>=2.7.0
 
 # Testing
