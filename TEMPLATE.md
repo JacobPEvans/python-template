@@ -19,8 +19,11 @@ Replace every `REPLACE_ME` token:
 git mv src/hello_world src/<your_package_name>
 ```
 
-Update any imports in `tests/` and elsewhere from `hello_world` to your
-package name.
+- Update any imports in `tests/` and elsewhere from `hello_world` to your
+  package name.
+- Update package-level metadata in `src/<your_package_name>/__init__.py`:
+  `__author__`, `__email__`, and `__version__` are currently hardcoded
+  with the template author's information and must be replaced.
 
 ## 3. Update README
 
