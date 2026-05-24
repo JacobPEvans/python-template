@@ -27,7 +27,7 @@ dev = [
     # Type checking
     "mypy>=1.16.1",
     # Security
-    "bandit[toml]>=1.8.0",
+    "bandit[toml]>=1.9.4",
     # Testing
     "pytest>=8.4.1",
     "pytest-cov>=6.2.0",
