@@ -29,7 +29,7 @@ dev = [
     # Security
     "bandit[toml]>=1.8.0",
     # Testing
-    "pytest>=8.4.1",
+    "pytest>=9.0.3",
     "pytest-cov>=6.2.0",
     "pytest-xdist>=3.5.0",  # Parallel test execution
     "pytest-randomly>=3.16.0",  # Randomize test order
