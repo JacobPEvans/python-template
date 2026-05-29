@@ -1,0 +1,8 @@
+name: release-please
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  run:
+    uses: JacobPEvans/ai-workflows/.github/workflows/release-please.yml@facc9a67ffdda22c75f5a94964fc5ab266cf3a60 # v0.16.0
